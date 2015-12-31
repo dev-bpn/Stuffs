@@ -24,7 +24,7 @@ public class FirstFragment extends android.support.v4.app.Fragment {
         Bundle args = new Bundle();
         args.putInt("someInt", page);
         args.putString("someTitle", title);
-        args.putString("description" , description);
+        args.putString("description", description);
         args.putString("imageLink" , imageLink);
         fragmentFirst.setArguments(args);
         return fragmentFirst;
@@ -46,8 +46,15 @@ public class FirstFragment extends android.support.v4.app.Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_first, container, false);
-        TextView tvLabel = (TextView) view.findViewById(R.id.textView);
-        tvLabel.setText(page + " -- " + title +" "+ description + " "+imageLink);
+        TextView textViewTitle= (TextView) view.findViewById(R.id.textViewTitle);
+        textViewTitle.setText(page + " -- " + title );
+
+        TextView textViewDesc= (TextView) view.findViewById(R.id.textViewDescription);
+        textViewDesc.setText(page + "---"+ description);
+
+        TextView textViewImageLink= (TextView) view.findViewById(R.id.textViewImageLink);
+        textViewImageLink.setText(page + "---" + imageLink);
+
         return view;
     }
 }

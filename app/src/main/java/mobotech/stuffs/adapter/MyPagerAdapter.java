@@ -29,15 +29,15 @@ public class MyPagerAdapter extends FragmentStatePagerAdapter {
             case 0: // Fragment # 0 - This will show FirstFragment
                 return FirstFragment.newInstance(0, "Title 0 " , "Description 0 " , "ImageLink 0 ");
             case 1: // Fragment # 0 - This will show FirstFragment different title
-                return FirstFragment.newInstance(0, "Title 1 " , "Description 1 " , "ImageLink 1 ");
+                return FirstFragment.newInstance(1, "Title 1 " , "Description 1 " , "ImageLink 1 ");
             case 2: // Fragment # 1 - This will show SecondFragment
-                return FirstFragment.newInstance(0, "Title 2 " , "Description 2 " , "ImageLink 2 ");
+                return FirstFragment.newInstance(2, "Title 2 " , "Description 2 " , "ImageLink 2 ");
             case 3: // Fragment # 1 - This will show SecondFragment
-                return FirstFragment.newInstance(0, "Title 3 " , "Description 3 " , "ImageLink 3 ");
+                return FirstFragment.newInstance(3, "Title 3 " , "Description 3 " , "ImageLink 3 ");
             case 4: // Fragment # 1 - This will show SecondFragment
-                return FirstFragment.newInstance(0, "Title 4 " , "Description 4 " , "ImageLink 4 ");
+                return FirstFragment.newInstance(4, "Title 4 " , "Description 4 " , "ImageLink 4 ");
             case 5: // Fragment # 1 - This will show SecondFragment
-                return FirstFragment.newInstance(0, "Title 5 " , "Description 5 " , "ImageLink 5 ");
+                return FirstFragment.newInstance(5, "Title 5 " , "Description 5 " , "ImageLink 5 ");
             default:
                 return null;
         }
