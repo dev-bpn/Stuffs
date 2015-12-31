@@ -1,10 +1,13 @@
 package mobotech.stuffs;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
+import com.afollestad.materialdialogs.AlertDialogWrapper;
 import com.afollestad.materialdialogs.MaterialDialog;
 
 public class MainActivity extends AppCompatActivity {
@@ -19,6 +22,28 @@ public class MainActivity extends AppCompatActivity {
 //        dismissingDialog();
 
 //        dialogWithIcon();
+
+        alertDialog();
+    }
+
+    private void alertDialog() {
+
+        new AlertDialogWrapper.Builder(this)
+                .setTitle("Dialog Title")
+                .setMessage("Do you want to cancel Alert Dialog ?")
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        Toast.makeText(getApplicationContext() , "No.." , Toast.LENGTH_SHORT).show();
+                    }
+                }).setPositiveButton("Yeah" , new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+//                dialogInterface.dismiss();
+                Toast.makeText(getApplicationContext() , "Yeah.." , Toast.LENGTH_SHORT).show();
+            }
+        }).show();
 
     }
 
