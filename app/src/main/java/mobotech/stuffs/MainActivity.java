@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.AlertDialogWrapper;
+import com.afollestad.materialdialogs.GravityEnum;
 import com.afollestad.materialdialogs.MaterialDialog;
 
 public class MainActivity extends AppCompatActivity {
@@ -35,12 +36,26 @@ public class MainActivity extends AppCompatActivity {
 
 //        coloredDialogBox();
 
-        dialogCallbacks();
+//        dialogCallbacks();
 
+        dialogStuffsGravity();
 
     }
 
+    private void dialogStuffsGravity() {
 
+        new MaterialDialog.Builder(this)
+                .title("My Title")
+                .titleGravity(GravityEnum.CENTER)
+                .content("The full Content......The full Content......The full Content......")
+                .contentGravity(GravityEnum.CENTER)
+                .positiveText("Yes")
+                .btnStackedGravity(GravityEnum.START)
+                .itemsGravity(GravityEnum.END)
+                .buttonsGravity(GravityEnum.END)
+                .show();
+
+    }
 
     private void dialogCallbacks() {
 
