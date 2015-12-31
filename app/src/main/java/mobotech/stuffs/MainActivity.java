@@ -41,9 +41,22 @@ public class MainActivity extends AppCompatActivity {
 
 //        dialogStuffsGravity();
 
-        inputDialogs();
+//        inputDialogs();
+
+        progressDialog();
+    }
+
+    private void progressDialog() {
+
+        new MaterialDialog.Builder(this)
+                .title("Loading...")
+                .content("Please wait the data is loading...")
+                .progress(true, 0)
+                .cancelable(false)
+                .show();
 
     }
+
 
     private void inputDialogs() {
 
