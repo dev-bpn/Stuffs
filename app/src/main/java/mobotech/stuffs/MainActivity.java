@@ -18,21 +18,21 @@ public class MainActivity extends AppCompatActivity {
 
 //        dismissingDialog();
 
-        dialogWithIcon();
+//        dialogWithIcon();
 
     }
 
-    private void dialogWithIcon() {
-
-        new MaterialDialog.Builder(this)
-                .title("Title")
-                .content("Here the content stuffs...")
-                .positiveText("OK")
-                .icon(R.drawable.launcher)
-                .maxIconSize(100)
-                .show();
-
-    }
+//    private void dialogWithIcon() {
+//
+//        new MaterialDialog.Builder(this)
+//                .title("Title")
+//                .content("Here the content stuffs...")
+//                .positiveText("OK")
+//                .icon(R.drawable.launcher)
+//                .maxIconSize(100)
+//                .show();
+//
+//    }
 
     private void dismissingDialog() {
 
