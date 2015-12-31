@@ -15,15 +15,17 @@ import mobotech.stuffs.R;
  */
 public class FirstFragment extends android.support.v4.app.Fragment {
     // Store instance variables
-    private String title;
+    private String title , description , imageLink;
     private int page;
 
     // newInstance constructor for creating fragment with arguments
-    public static FirstFragment newInstance(int page, String title) {
+    public static FirstFragment newInstance(int page, String title , String description , String imageLink) {
         FirstFragment fragmentFirst = new FirstFragment();
         Bundle args = new Bundle();
         args.putInt("someInt", page);
         args.putString("someTitle", title);
+        args.putString("description" , description);
+        args.putString("imageLink" , imageLink);
         fragmentFirst.setArguments(args);
         return fragmentFirst;
     }
@@ -34,6 +36,9 @@ public class FirstFragment extends android.support.v4.app.Fragment {
         super.onCreate(savedInstanceState);
         page = getArguments().getInt("someInt", 0);
         title = getArguments().getString("someTitle");
+        description = getArguments().getString("description");
+        imageLink = getArguments().getString("imageLink");
+
     }
 
     // Inflate the view for the fragment based on layout XML
@@ -42,7 +47,7 @@ public class FirstFragment extends android.support.v4.app.Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_first, container, false);
         TextView tvLabel = (TextView) view.findViewById(R.id.textView);
-        tvLabel.setText(page + " -- " + title);
+        tvLabel.setText(page + " -- " + title +" "+ description + " "+imageLink);
         return view;
     }
 }
