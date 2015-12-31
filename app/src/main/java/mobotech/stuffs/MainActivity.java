@@ -14,8 +14,36 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Basic Dialog
-        basicDialog();
+//        basicDialog();
+
+//        dismissingDialog();
+
+        dialogWithIcon();
+
+    }
+
+    private void dialogWithIcon() {
+
+        new MaterialDialog.Builder(this)
+                .title("Title")
+                .content("Here the content stuffs...")
+                .positiveText("OK")
+                .icon(R.drawable.launcher)
+                .maxIconSize(100)
+                .show();
+
+    }
+
+    private void dismissingDialog() {
+
+        MaterialDialog.Builder builder = new MaterialDialog.Builder(this)
+                .title("Title")
+                .content("Here goes the content stuffs...")
+                .positiveText("Ok");
+
+        MaterialDialog dialog = builder.build();
+        dialog.show();
+        dialog.dismiss();
 
     }
 
