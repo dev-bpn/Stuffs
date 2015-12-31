@@ -28,9 +28,35 @@ public class MainActivity extends AppCompatActivity {
 
 //        listDialog();
 
-        singleChoiceListDialog();
+//        singleChoiceListDialog();
+
+        multiChoiceListDialog();
+    }
+
+    private void multiChoiceListDialog() {
+
+        new MaterialDialog.Builder(this)
+                .title("Multi Choice List dialog")
+                .items(R.array.listItems)
+                .itemsCallbackMultiChoice(null, new MaterialDialog.ListCallbackMultiChoice() {
+                    @Override
+                    public boolean onSelection(MaterialDialog dialog, Integer[] which, CharSequence[] text) {
+                        /**
+                         * If you use alwaysCallMultiChoiceCallback(), which is discussed below,
+                         * returning false here won't allow the newly selected check box to actually be selected.
+                         * See the limited multi choice dialog example in the sample project for details.
+                         **/
+
+                        Toast.makeText(getApplicationContext() , "Selected at.."+ which +" "+ text , Toast.LENGTH_SHORT).show();
+
+                        return true;
+                    }
+                })
+                .positiveText("Done")
+                .show();
 
     }
+
 
     private void singleChoiceListDialog() {
 
