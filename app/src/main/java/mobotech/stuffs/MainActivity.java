@@ -1,6 +1,7 @@
 package mobotech.stuffs;
 
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -30,8 +31,70 @@ public class MainActivity extends AppCompatActivity {
 
 //        singleChoiceListDialog();
 
-        multiChoiceListDialog();
+//        multiChoiceListDialog();
+
+//        coloredDialogBox();
+
+        dialogCallbacks();
+
+
     }
+
+
+
+    private void dialogCallbacks() {
+
+        new MaterialDialog.Builder(this)
+                .title("Use Google's Location Services?")
+                .content("Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.")
+                .positiveText("Agree")
+                .showListener(new DialogInterface.OnShowListener() {
+                    @Override
+                    public void onShow(DialogInterface dialog) {
+
+                        Toast.makeText(getApplicationContext() , "Dialog onShow ..", Toast.LENGTH_SHORT).show();
+
+                    }
+                })
+                .cancelListener(new DialogInterface.OnCancelListener() {
+                    @Override
+                    public void onCancel(DialogInterface dialog) {
+
+                        Toast.makeText(getApplicationContext() , "Dialog onCancel ..", Toast.LENGTH_SHORT).show();
+
+                    }
+                })
+                .dismissListener(new DialogInterface.OnDismissListener() {
+                    @Override
+                    public void onDismiss(DialogInterface dialog) {
+
+                        Toast.makeText(getApplicationContext() , "Dialog onDismiss ..", Toast.LENGTH_SHORT).show();
+
+                    }
+                })
+                .show();
+
+    }
+
+    private void coloredDialogBox() {
+
+        new MaterialDialog.Builder(this)
+                .titleColorRes(R.color.material_blue_grey_800)
+                .contentColor(Color.WHITE) // notice no 'res' postfix for literal color
+                .dividerColorRes(R.color.material_blue_grey_900)
+                .backgroundColorRes(R.color.material_blue_grey_800)
+                .positiveColorRes(R.color.material_deep_teal_200)
+                .neutralColorRes(R.color.material_blue_grey_950)
+                .negativeColorRes(R.color.ripple_material_dark)
+                .widgetColorRes(R.color.ripple_material_light)
+                .title("My Title")
+                .content("Content for coloured dialog box..")
+                .positiveText("Yeah")
+                .negativeText("No")
+                .show();
+
+    }
+
 
     private void multiChoiceListDialog() {
 
