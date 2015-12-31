@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.AlertDialogWrapper;
@@ -23,7 +24,54 @@ public class MainActivity extends AppCompatActivity {
 
 //        dialogWithIcon();
 
-        alertDialog();
+//        alertDialog();
+
+//        listDialog();
+
+        singleChoiceListDialog();
+
+    }
+
+    private void singleChoiceListDialog() {
+
+        new MaterialDialog.Builder(this)
+                .title("Single Choice List Dialog")
+                .items(R.array.listItems)
+                .itemsCallbackSingleChoice(-1, new MaterialDialog.ListCallbackSingleChoice() {
+                    @Override
+                    public boolean onSelection(MaterialDialog dialog, View view, int position, CharSequence text) {
+                        /**
+                         * If you use alwaysCallSingleChoiceCallback(), which is discussed below,
+                         * returning false here won't allow the newly selected radio button to actually be selected.
+                         **/
+                        Toast.makeText(getApplicationContext() , "Selected at.."+ position , Toast.LENGTH_SHORT).show();
+
+
+                        return true;
+                    }
+                })
+                .positiveText("Done")
+                .show();
+
+    }
+
+
+    private void listDialog() {
+
+        new MaterialDialog.Builder(this)
+                .title("List Dialog")
+                .items(R.array.listItems)
+                .itemsCallback(new MaterialDialog.ListCallback() {
+                    @Override
+                    public void onSelection(MaterialDialog dialog, View view, int position, CharSequence text) {
+
+                        Toast.makeText(getApplicationContext() , "Clicked at.."+ position , Toast.LENGTH_SHORT).show();
+
+
+                    }
+                })
+                .show();
+
     }
 
     private void alertDialog() {
