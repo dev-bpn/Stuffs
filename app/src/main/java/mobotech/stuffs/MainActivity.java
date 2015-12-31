@@ -43,7 +43,40 @@ public class MainActivity extends AppCompatActivity {
 
 //        inputDialogs();
 
-        progressDialog();
+//        progressDialog();
+
+        seekbarProgressDialog();
+
+    }
+
+    private void seekbarProgressDialog() {
+
+        // Create and show a non-indeterminate dialog with a max value of 150
+// If the showMinMax parameter is true, a min/max ratio will be shown to the left of the seek bar.
+        boolean showMinMax = true;
+        MaterialDialog dialog = new MaterialDialog.Builder(this)
+                .title("Title")
+                .content("Please Wait data is downloading...")
+                .progress(false, 150, showMinMax)
+                .show();
+
+        // Loop until the dialog's progress value reaches the max (150)
+        while (dialog.getCurrentProgress() != dialog.getMaxProgress()) {
+            // If the progress dialog is cancelled (the user closes it before it's done), break the loop
+            if (dialog.isCancelled()) break;
+            // Wait 50 milliseconds to simulate doing work that requires progress
+            try {
+                Thread.sleep(50);
+            } catch (InterruptedException e) {
+                break;
+            }
+            // Increment the dialog's progress by 1 after sleeping for 50ms
+            dialog.incrementProgress(1);
+        }
+
+        // When the loop exits, set the dialog content to a string that equals "Done"
+        dialog.setContent("Done");
+
     }
 
     private void progressDialog() {
