@@ -2,11 +2,19 @@ package mobotech.stuffs.fragment;
 
 
 import android.app.Fragment;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageRequest;
+import com.android.volley.toolbox.Volley;
 
 import mobotech.stuffs.R;
 
@@ -55,6 +63,26 @@ public class FirstFragment extends android.support.v4.app.Fragment {
         TextView textViewImageLink= (TextView) view.findViewById(R.id.textViewImageLink);
         textViewImageLink.setText(page + "---" + imageLink);
 
+        imageViewJob(view);
+
         return view;
+    }
+
+    private void imageViewJob(View view){
+
+        final ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        ImageRequest imageRequest = new ImageRequest(imageLink, new Response.Listener<Bitmap>() {
+            @Override
+            public void onResponse(Bitmap response) {
+                imageView.setImageBitmap(response);
+            }
+        }, 200, 100, null, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                imageView.setImageResource(R.drawable.error);
+            }
+        });
+        requestQueue.add(imageRequest);
     }
 }
