@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -38,7 +39,26 @@ public class MainActivity extends AppCompatActivity {
 
 //        dialogCallbacks();
 
-        dialogStuffsGravity();
+//        dialogStuffsGravity();
+
+        inputDialogs();
+
+    }
+
+    private void inputDialogs() {
+
+        new MaterialDialog.Builder(this)
+                .title("Input")
+                .content("Here goes the full content of blahh..")
+                .inputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD)
+                .input("InputHint", "InputPrefill", new MaterialDialog.InputCallback() {
+                    @Override
+                    public void onInput(MaterialDialog dialog, CharSequence input) {
+
+                        Toast.makeText(getApplicationContext() , "Dialog onInput .."+ input, Toast.LENGTH_SHORT).show();
+
+                    }
+                }).show();
 
     }
 
