@@ -45,9 +45,22 @@ public class MainActivity extends AppCompatActivity {
 
 //        progressDialog();
 
-        seekbarProgressDialog();
+//        seekbarProgressDialog();
+
+        intermediateHorizontalDialog();
+    }
+
+    private void intermediateHorizontalDialog() {
+
+        new MaterialDialog.Builder(this)
+                .title("Dialog Title")
+                .content("Please wait its loading..")
+                .progress(true, 0)
+                .progressIndeterminateStyle(true)
+                .show();
 
     }
+
 
     private void seekbarProgressDialog() {
 
