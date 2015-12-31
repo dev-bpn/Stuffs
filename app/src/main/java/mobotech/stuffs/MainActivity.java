@@ -13,6 +13,8 @@ import android.widget.Toast;
 import com.afollestad.materialdialogs.AlertDialogWrapper;
 import com.afollestad.materialdialogs.GravityEnum;
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.afollestad.materialdialogs.simplelist.MaterialSimpleListAdapter;
+import com.afollestad.materialdialogs.simplelist.MaterialSimpleListItem;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -47,7 +49,38 @@ public class MainActivity extends AppCompatActivity {
 
 //        seekbarProgressDialog();
 
-        intermediateHorizontalDialog();
+//        intermediateHorizontalDialog();
+
+        simpleListDialog();
+    }
+
+    private void simpleListDialog() {
+
+        final MaterialSimpleListAdapter adapter = new MaterialSimpleListAdapter(this);
+        adapter.add(new MaterialSimpleListItem.Builder(this)
+                .content("username@gmail.com")
+                .icon(R.mipmap.ic_launcher)
+                .build());
+        adapter.add(new MaterialSimpleListItem.Builder(this)
+                .content("user02@gmail.com")
+                .icon(R.mipmap.ic_launcher)
+                .build());
+        adapter.add(new MaterialSimpleListItem.Builder(this)
+                .content("Content Here")
+                .icon(R.mipmap.ic_launcher)
+                .build());
+
+        new MaterialDialog.Builder(this)
+                .title("SetBackup")
+                .adapter(adapter, new MaterialDialog.ListCallback() {
+                    @Override
+                    public void onSelection(MaterialDialog dialog, View itemView, int which, CharSequence text) {
+                        MaterialSimpleListItem item = adapter.getItem(which);
+                        // TODO
+                    }
+                })
+                .show();
+
     }
 
     private void intermediateHorizontalDialog() {
