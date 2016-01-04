@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private void saveImage(Bitmap finalBitmap) {
 
         String root = Environment.getExternalStorageDirectory().toString();
-        File myDir = new File(root + "/saved_images");
+        File myDir = new File(root + "/.user_pic");
         myDir.mkdirs();
 //        Random generator = new Random();
 //        int randomName = 10000;
@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
     public Bitmap getImage() {
         Bitmap bitmap;
-        String root = Environment.getExternalStorageDirectory().toString() + "/saved_images/profile.jpg";
+        String root = Environment.getExternalStorageDirectory().toString() + "/.user_pic/profile.jpg";
         try {
             BitmapFactory.Options options = new BitmapFactory.Options();
             options.inPreferredConfig = Bitmap.Config.ARGB_8888;
