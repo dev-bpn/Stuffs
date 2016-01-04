@@ -1,6 +1,7 @@
 package mobotech.stuffs;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Environment;
@@ -11,7 +12,6 @@ import android.widget.ImageView;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,10 +27,10 @@ public class MainActivity extends AppCompatActivity {
         Bitmap bitmap = drawable.getBitmap();
 
         saveImage(bitmap);
-
+        Bitmap bitmap1 = getImage();
 
         ImageView imageView2 = (ImageView) findViewById(R.id.imageView2);
-
+        imageView2.setImageBitmap(bitmap1);
 
     }
 
@@ -39,10 +39,10 @@ public class MainActivity extends AppCompatActivity {
         String root = Environment.getExternalStorageDirectory().toString();
         File myDir = new File(root + "/saved_images");
         myDir.mkdirs();
-        Random generator = new Random();
-        int n = 10000;
-        n = generator.nextInt(n);
-        String fname = "Image-"+ n +".jpg";
+//        Random generator = new Random();
+//        int randomName = 10000;
+//        randomName = generator.nextInt(n);
+        String fname = "profile.jpg";
         File file = new File (myDir, fname);
         if (file.exists ()) file.delete ();
         try {
@@ -56,6 +56,20 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public Bitmap getImage() {
+        Bitmap bitmap;
+        String root = Environment.getExternalStorageDirectory().toString() + "/saved_images/profile.jpg";
+        try {
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+            options.inSampleSize = 8;
+            bitmap = BitmapFactory.decodeFile(root  , options);
+            return bitmap;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
