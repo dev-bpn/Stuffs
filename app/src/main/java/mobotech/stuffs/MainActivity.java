@@ -1,16 +1,31 @@
 package mobotech.stuffs;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+import mobotech.stuffs.adapter.RecommendationsAdapter;
+import mobotech.stuffs.view.NonSwipeableViewPager;
+
 public class MainActivity extends AppCompatActivity {
+
+    @InjectView(R.id.recommendations_viewpager)
+    NonSwipeableViewPager mNonSwipableViewPager;
+
+    private String[] tabs= {"q" , "e"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.inject(this);
+
+        RecommendationsAdapter adapter = new RecommendationsAdapter(getSupportFragmentManager(), tabs);
+        mNonSwipableViewPager.setAdapter(adapter);
+
     }
 
     @Override
