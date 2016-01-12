@@ -17,11 +17,7 @@
         app:cardCornerRadius="5dp"
         app:cardPreventCornerOverlap="false">
 
-        <mobotech.stuffs.view.AutoScrollViewPager
-            android:id="@+id/viewpager"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:background="#444"/>
+
 
     </android.support.v7.widget.CardView>
 
