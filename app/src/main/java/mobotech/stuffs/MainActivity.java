@@ -1,16 +1,37 @@
 package mobotech.stuffs;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.ArrayList;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+import mobotech.stuffs.adapter.ImageSliderAdapter;
+import mobotech.stuffs.model.Banner;
+import mobotech.stuffs.view.AutoScrollViewPager;
+
 public class MainActivity extends AppCompatActivity {
+
+    @InjectView(R.id.viewpager)
+    AutoScrollViewPager mViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.inject(this);
+
+        ArrayList<Banner> bannerArrayList = new ArrayList<>();
+        bannerArrayList.add(new Banner("Banner Title" , "http://www.queness.com/resources/images/png/apple_ex.png"));
+        bannerArrayList.add(new Banner("Banner title 2" , "http://donutey.com/images/format/PNG1.png"));
+
+        mViewPager.setAdapter(new ImageSliderAdapter(this , bannerArrayList).setInfiniteLoop(true));
+        mViewPager.setInterval(4000);
+        mViewPager.startAutoScroll();
+
     }
 
     @Override
