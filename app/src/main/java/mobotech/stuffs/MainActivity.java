@@ -6,6 +6,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +22,15 @@ public class MainActivity extends AppCompatActivity {
     @InjectView(R.id.rv)
     RecyclerView recyclerView;
 
+    @InjectView(R.id.listView)
+    ListView listView;
+
+    @InjectView(R.id.listView2)
+    ListView listView2;
+
     private List<Person> persons;
+
+    private String[] myListViewList = {"Bpn" , "Amn" , "Ktm" , "Btl" , "eee" , "ttt" , "uuu" , "iii" , "999" , "qqq" , "www" , "rrr" , "ttt"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +38,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.inject(this);
         initializeData();
+
+        listView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, myListViewList));
+        listView2.setAdapter(new ArrayAdapter<String>(this , android.R.layout.simple_list_item_1 , myListViewList));
 
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
